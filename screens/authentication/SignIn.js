@@ -1,176 +1,196 @@
-/* ====== REACT ====== */
-import React from "react";
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import React from 'react';
+import {
+    View,
+    Text,
+    TouchableOpacity,
+    Image
+} from 'react-native';
 
-/* ====== COMPONENTS ====== */
 import { AuthLayout } from "../";
-import { FormInput, TextButton } from "../../components";
+import { FONTS, SIZES, COLORS, icons} from "../../constants";
 
-/* ====== UTILS ====== */
-import { FONTS, SIZES, COLORS, icons } from "../../constants";
+import { FormInput, TextButton } from "../../components";
 import { utils } from "../../utils";
 
-const SignIn = ({ navigation }) => {
-  function checkRecord() {
-    var APIURL = "http://192.168.0.16/AM_LOGIN/login.php";
+const SignIn = ({ navigation })  => {
 
-    var headers = {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    };
+    function checkRecord(){
 
-    var Data = {
-      Email: email,
-      Password: password,
-    };
+        var APIURL = "http://192.168.0.16/AM_LOGIN/login.php";
 
-    // Pobieranie danych z API jako Promise
-    fetch(APIURL, {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify(Data),
-    })
-      .then((Response) => Response.json())
-      .then((Response) => {
-        alert(Response[0].Message);
-        // Jeśli zalogowano pomyślnie
-        if (Response[0].Message == "Zalogowano pomyślnie") {
-          navigation.navigate("Home");
+        var headers = {
+            'Accept' : 'application/json',
+            'Content-Type' : 'application/json'
+          };
+        
+        
+        var Data ={
+            Email: email,
+            Password: password
+        };
+
+        fetch(APIURL,{
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify(Data)
+          })
+          .then((Response)=>Response.json())
+          .then((Response)=>{
+            alert(Response[0].Message)
+            if (Response[0].Message == "Zalogowano pomyślnie") {
+              navigation.navigate("Home");
+            }
+            console.log(Data);
+          })
+          .catch((error)=>{
+            console.error("[BŁĄD]" + error);
+          })
         }
+    
 
-        console.log(Data);
-      })
-      .catch((error) => {
-        console.error("[BŁĄD]" + error);
-      });
-  }
+    const [email, setEmail] = React.useState("");
+    const [password, setPassword] = React.useState("");
+    const [emailError, setEmailError] = React.useState("");
 
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [emailError, setEmailError] = React.useState("");
-  const [showPass, setShowPass] = React.useState(false);
+    const [showPass, setShowPass] = React.useState(false);
 
-  return (
-    <AuthLayout
-      title="Zaloguj się"
-      subtitle="Witaj z powrotem, brakowało nam Ciebie :)"
-    >
-      <View
-        style={{
-          flex: 1,
-          marginTop: SIZES.padding * 5,
-          margin: 10,
-        }}
-      >
-        <FormInput
-          label="Email"
-          keyboardType="email-address"
-          autoCompleteType="email"
-          onChange={(value) => {
-            utils.validateEmail(value, setEmailError);
-            setEmail(value);
-          }}
-          errorMsg={emailError}
-          appendComponent={
-            <View
-              style={{
-                justifyContent: "center",
-              }}
-            >
-              <Image
-                source={
-                  email == "" || (email != "" && emailError == "")
-                    ? icons.correct
-                    : icons.cross
-                }
-                style={{
-                  height: 20,
-                  width: 20,
-                  tintColor:
-                    email == ""
-                      ? COLORS.gray
-                      : email != "" && emailError == ""
-                      ? COLORS.green
-                      : COLORS.red,
-                }}
-              />
-            </View>
-          }
-        />
 
-        <FormInput
-          label="Hasło"
-          secureTextEntry={!showPass}
-          autoCompleteType="password"
-          containerStyle={{
-            marginTop: SIZES.radius,
-          }}
-          onChange={(value) => setPassword(value)}
-          appendComponent={
-            <TouchableOpacity
-              style={{
-                width: 40,
-                alignItems: "flex-end",
-                justifyContent: "center",
-              }}
-              onPress={() => setShowPass(!showPass)}
-            >
-              <Image
-                source={showPass ? icons.eye_close : icons.eye_open}
-                style={{
-                  height: 20,
-                  width: 20,
-                  tintColor: COLORS.gray,
-                }}
-              ></Image>
-            </TouchableOpacity>
-          }
-        />
-
-        <TextButton
-          label="Zaloguj się"
-          buttonContainerStyle={{
-            height: 55,
-            alignItems: "center",
-            marginTop: 40,
-            borderRadius: SIZES.radius,
-            backgroundColor: COLORS.primary,
-          }}
-          onPress={() => checkRecord(email, password)}
-        />
-
-        <View
-          style={{
-            flexDirection: "row",
-            marginTop: SIZES.radius,
-            justifyContent: "center",
-          }}
+    return (
+        <AuthLayout
+            title="Zaloguj się"
+            subtitle="Witaj. Skąd to zwątpienie. Może zalogujesz się i zamówisz coś pysznego?"
         >
-          <Text
-            style={{
-              color: COLORS.darkGray,
-              ...FONTS.body3,
-            }}
-          >
-            Nie masz konta?
-          </Text>
+            <View
+                style={{
+                    flex: 1,
+                    marginTop: SIZES.padding * 5,
+                    margin:10
+                }}
+            >
 
-          <TextButton
-            label="Zarejestruj się"
-            buttonContainerStyle={{
-              marginLeft: 3,
-              backgroundColor: null,
-            }}
-            labelStyle={{
-              color: COLORS.primary,
-              ...FONTS.h4,
-            }}
-            onPress={() => navigation.navigate("SignUp")}
-          />
-        </View>
-      </View>
-    </AuthLayout>
-  );
-};
+                <FormInput
+                    label="Email"
+                    keyboardType="email-address"
+                    autoCompleteType="email"
+                    onChange={(value) => {
+
+                        utils.validateEmail(value, setEmailError)
+                        setEmail(value)
+                    }}
+
+                    errorMsg={emailError}
+                    appendComponent={
+                        <View
+                            style={{
+                                justifyContent: 'center'
+                            }}
+                        >
+                            
+                            <Image
+                                source={email == "" || (email != "" 
+                                && emailError == "") ? icons.correct : icons.cross}
+                                style={{
+                                    height: 20,
+                                    width: 20,
+                                    tintColor: email == "" ? 
+                                    COLORS.gray : (email !="" &&
+                                    emailError == "") ? COLORS.
+                                    green : COLORS.red
+                                }}
+                            
+                            />
+
+                        </View>
+                    }
+
+                />
+
+                            <FormInput
+                                label="Hasło"
+                                secureTextEntry={!showPass}
+                                autoCompleteType='password'
+                                containerStyle={{
+                                    marginTop: SIZES.radius
+                                }}
+                                onChange={(value) => setPassword(value)}
+                                appendComponent={
+                                    <TouchableOpacity
+                                        style={{
+                                            width: 40,
+                                            alignItems: 'flex-end',
+                                            justifyContent: 'center'
+                                        }}
+                                        onPress={() => setShowPass(!showPass)}
+                                    >
+                                        <Image
+                                            source={showPass ? icons.eye_close: 
+                                                icons.eye_open}
+                                            style={{
+                                                height: 20,
+                                                width: 20,
+                                                tintColor: COLORS.gray
+                                            }}
+                                        >
+
+
+                                        </Image>
+
+                                    </TouchableOpacity>
+                                }
+                                />
+
+                                <TextButton
+                                    label="Zaloguj się"
+                                    buttonContainerStyle={{
+                                        height: 55,
+                                        alignItems: 'center',
+                                        marginTop: 40,
+                                        borderRadius: SIZES.radius,
+                                        backgroundColor: COLORS.primary
+                                    }}
+                                    onPress={() => checkRecord(email, password)}
+                                />
+
+                                <View
+                                    style={{
+                                        flexDirection: 'row',
+                                        marginTop: SIZES.radius,
+                                        justifyContent: 'center'
+                                    }}
+                                >
+
+                                    <Text
+                                        style={{
+                                            color: COLORS.darkGray,
+                                            ...FONTS.body3
+                                        }}
+                                    >
+                                        Nie masz konta?
+                                    </Text>
+
+                                    <TextButton
+                                        label="Zarejestruj się"
+                                        buttonContainerStyle={{
+                                            marginLeft: 3,
+                                            backgroundColor: null
+                                        }}
+                                        labelStyle={{
+                                            color: COLORS.primary,
+                                            ...FONTS.h4
+                                        }}
+                                        onPress={() => navigation.navigate
+                                        ("SignUp")}
+                                    />
+
+
+                                </View>
+
+
+            </View>
+        </AuthLayout>
+
+        
+    )
+}
 
 export default SignIn;
