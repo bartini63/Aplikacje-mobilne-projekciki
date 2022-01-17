@@ -26,7 +26,6 @@ export const cross = require("../assets/icons/cross.png");
 export const home = require("../assets/icons/home.png")
 export const cart = require("../assets/icons/cart.png");
 export const my_wallet = require("../assets/icons/wallet.png");
-export const coupons = require("../assets/icons/coupon.png");
 export const help = require("../assets/icons/help.png");
 export const invite = require("../assets/icons/profile.png");
 export const correct = require("../assets/icons/correct.png");
@@ -65,7 +64,6 @@ export default {
     home,
     cart,
     my_wallet,
-    coupons,
     help,
     invite,
     correct,

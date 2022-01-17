@@ -28,7 +28,6 @@ const myProfile = {
 const screens = {
     home: "Strona główna",
     cart: "Koszyk",
-    coupons: "Kupony",
     help: "Wsparcie",
     logout: "Wyloguj się"
 }
