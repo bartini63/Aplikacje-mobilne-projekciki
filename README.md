@@ -16,4 +16,3 @@ Serwer logowania zbudowany w oparciu o MySQL oraz PHP.
 - Bartosz Nowotnik (Leader)
 - Michał Pędzik (Helper)
 - Daniel Palak (Helper)
-  > > > > > > > 60891f1 (README.md update)
