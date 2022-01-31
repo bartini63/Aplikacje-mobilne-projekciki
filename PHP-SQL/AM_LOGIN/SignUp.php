@@ -9,7 +9,7 @@ $exeSQL = mysqli_query($conn, $SQL);
 $checkEmail =  mysqli_num_rows($exeSQL);
 
 if ($checkEmail != 0) {
-    $Message = "Jesteś już zarejestrowany, zaloguj się!";
+    $Message = "Ten email jest już zarejestrowany. Zaloguj się!";
 } else {
 
     $InsertQuerry = "INSERT INTO newuser(UserEmail, UserPW) VALUES('$UserEmail', '$UserPW')";
@@ -17,7 +17,7 @@ if ($checkEmail != 0) {
     $R = mysqli_query($conn, $InsertQuerry);
 
     if ($R) {
-        $Message = "Zarejestrowano, zaloguj się";
+        $Message = "Udało Ci się zarejestrować! Możesz skorzystać z naszych usług!";
     } else {
         $Message = "Wystąpił błąd";
     }

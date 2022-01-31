@@ -37,7 +37,7 @@ const SignIn = ({ navigation })  => {
           .then((Response)=>Response.json())
           .then((Response)=>{
             alert(Response[0].Message)
-            if (Response[0].Message == "Zalogowano pomyślnie") {
+            if (Response[0].Message == "Udalo Ci sie zalogowac pomyslnie!") {
               navigation.navigate("Home");
             }
             console.log(Data);
@@ -165,7 +165,7 @@ const SignIn = ({ navigation })  => {
                                             ...FONTS.body3
                                         }}
                                     >
-                                        Nie masz konta?
+                                        Nie posiadasz jeszcze konta?
                                     </Text>
 
                                     <TextButton

@@ -17,7 +17,7 @@ function validateEmail(value, setEmailError) {
 
 function validatePassword(value, setPasswordError) {
     if (value.length < 9) {
-        setPasswordError("Hasło musi zawierać minimum 9 znaków")
+        setPasswordError("Hasło musi zawierać minimum 8 znaków")
     } else {
         setPasswordError("")
     }
