@@ -113,8 +113,8 @@ const Home = ({ navigation }) => {
             categories: [1,7,9],
             photo: images.restaurant_1,
             location: {
-                latitude: 50.879536, 
-                longitude: 20.640954,
+                latitude: 50.876860, 
+                longitude: 20.632494,
             },
             courier: {
                 avatar: images.avatar_1,
@@ -213,7 +213,7 @@ const Home = ({ navigation }) => {
             categories: [5],
             photo: images.restaurant_3,
             location: {
-                latitude: 50.876860,
+                latitude: 50.865319, 
                 longitude: 20.634468,
             },
             courier: {
@@ -246,8 +246,8 @@ const Home = ({ navigation }) => {
             categories: [8],
             photo: images.restaurant_4,
             location: {
-                latitude: 50.876860,
-                longitude: 20.634468,
+                latitude: 50.874569, 
+                longitude: 20.675443,
             },
             courier: {
                 avatar: images.avatar_4,
@@ -279,8 +279,8 @@ const Home = ({ navigation }) => {
             categories: [1,6,7,9],
             photo: images.restaurant_5,
             location: {
-                latitude: 50.876860,
-                longitude: 20.634468,
+                latitude: 50.874349, 
+                longitude: 20.572368,
             },
             courier: {
                 avatar: images.avatar_4,
@@ -330,8 +330,8 @@ const Home = ({ navigation }) => {
             categories: [1],
             photo: images.restaurant_5,
             location: {
-                latitude: 50.875269, 
-                longitude: 20.634468,
+                latitude: 50.876860, 
+                longitude: 20.632494,
             },
             courier: {
                 avatar: images.avatar_1,
@@ -365,8 +365,8 @@ const Home = ({ navigation }) => {
             categories: [2,8],
             photo: images.restaurant_3,
             location: {
-                latitude: 50.875269, 
-                longitude: 20.634468,
+                latitude: 50.876860, 
+                longitude: 20.632494,
             },
             courier: {
                 avatar: images.avatar_5,
@@ -400,8 +400,8 @@ const Home = ({ navigation }) => {
             categories: [1,2],
             photo: images.restaurant_1,
             location: {
-                latitude: 50.875269, 
-                longitude: 20.634468,
+                latitude: 50.876860, 
+                longitude: 20.632494,
             },
             courier: {
                 avatar: images.avatar_3,
